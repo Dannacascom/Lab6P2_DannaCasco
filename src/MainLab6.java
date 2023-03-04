@@ -21,7 +21,6 @@ import javax.swing.JOptionPane;
  */
 public class MainLab6 extends javax.swing.JFrame {
     File archivo;
-     signup s = new signup();
      Usuarios u = new Usuarios();
      File f = new File("./Usuarios.txt");
      int edad;
@@ -33,7 +32,7 @@ public class MainLab6 extends javax.swing.JFrame {
      */
     public MainLab6() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        Bg.setLocation(0, 0);
        
     }
 
@@ -53,6 +52,22 @@ public class MainLab6 extends javax.swing.JFrame {
         usertxt = new javax.swing.JTextField();
         loginB = new javax.swing.JButton();
         signupB = new javax.swing.JButton();
+        Jp_lanzamientos = new javax.swing.JPanel();
+        Jp_signup = new javax.swing.JPanel();
+        signup = new javax.swing.JPanel();
+        signintxt4 = new java.awt.Label();
+        nombreA4 = new javax.swing.JTextField();
+        username4 = new javax.swing.JTextField();
+        Create4 = new javax.swing.JButton();
+        tipodeuser4 = new javax.swing.JComboBox<>();
+        password4 = new javax.swing.JTextField();
+        edad4 = new javax.swing.JSpinner();
+        signupB4 = new javax.swing.JButton();
+        Jp_lanzamiento = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        logintxt1 = new java.awt.Label();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -155,14 +170,206 @@ public class MainLab6 extends javax.swing.JFrame {
             .addGroup(BgLayout.createSequentialGroup()
                 .addGap(114, 114, 114)
                 .addComponent(loginP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         BgLayout.setVerticalGroup(
             BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BgLayout.createSequentialGroup()
                 .addGap(124, 124, 124)
                 .addComponent(loginP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout Jp_lanzamientosLayout = new javax.swing.GroupLayout(Jp_lanzamientos);
+        Jp_lanzamientos.setLayout(Jp_lanzamientosLayout);
+        Jp_lanzamientosLayout.setHorizontalGroup(
+            Jp_lanzamientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        Jp_lanzamientosLayout.setVerticalGroup(
+            Jp_lanzamientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        Jp_signup.setBackground(new java.awt.Color(0, 0, 0));
+
+        signup.setBackground(new java.awt.Color(255, 255, 255));
+
+        signintxt4.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
+        signintxt4.setText("Sign up\n");
+
+        nombreA4.setText("Nombre Artistico");
+        nombreA4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nombreA4nombreAMouseClicked(evt);
+            }
+        });
+
+        username4.setText("Username");
+        username4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                username4usernameMouseClicked(evt);
+            }
+        });
+        username4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                username4usernameActionPerformed(evt);
+            }
+        });
+
+        Create4.setBackground(new java.awt.Color(69, 173, 199));
+        Create4.setForeground(new java.awt.Color(255, 255, 255));
+        Create4.setText("Create");
+        Create4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Create4CreateMouseClicked(evt);
+            }
+        });
+        Create4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Create4CreateActionPerformed(evt);
+            }
+        });
+
+        tipodeuser4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Artista" }));
+        tipodeuser4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tipodeuser4tipodeuserMouseClicked(evt);
+            }
+        });
+
+        password4.setText("Password");
+        password4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                password4passwordMouseClicked(evt);
+            }
+        });
+
+        signupB4.setForeground(new java.awt.Color(153, 153, 153));
+        signupB4.setText("Back to Log in");
+        signupB4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signupB4signupBMouseClicked(evt);
+            }
+        });
+        signupB4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signupB4signupBActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout signupLayout = new javax.swing.GroupLayout(signup);
+        signup.setLayout(signupLayout);
+        signupLayout.setHorizontalGroup(
+            signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(signupLayout.createSequentialGroup()
+                .addGroup(signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(signupLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(username4)
+                            .addGroup(signupLayout.createSequentialGroup()
+                                .addComponent(edad4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nombreA4, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(signintxt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(password4)
+                            .addComponent(tipodeuser4, 0, 340, Short.MAX_VALUE)
+                            .addComponent(Create4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(signupLayout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(signupB4)))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        signupLayout.setVerticalGroup(
+            signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(signupLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(signintxt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(username4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(password4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tipodeuser4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(edad4)
+                    .addComponent(nombreA4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(Create4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(signupB4)
+                .addGap(17, 17, 17))
+        );
+
+        javax.swing.GroupLayout Jp_signupLayout = new javax.swing.GroupLayout(Jp_signup);
+        Jp_signup.setLayout(Jp_signupLayout);
+        Jp_signupLayout.setHorizontalGroup(
+            Jp_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Jp_signupLayout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(signup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
+        Jp_signupLayout.setVerticalGroup(
+            Jp_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Jp_signupLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(signup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
+
+        Jp_lanzamiento.setBackground(new java.awt.Color(0, 0, 0));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        logintxt1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
+        logintxt1.setText("Lanzamientos\n");
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
+        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane1.setViewportView(jTree1);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(logintxt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(106, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logintxt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout Jp_lanzamientoLayout = new javax.swing.GroupLayout(Jp_lanzamiento);
+        Jp_lanzamiento.setLayout(Jp_lanzamientoLayout);
+        Jp_lanzamientoLayout.setHorizontalGroup(
+            Jp_lanzamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Jp_lanzamientoLayout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(106, Short.MAX_VALUE))
+        );
+        Jp_lanzamientoLayout.setVerticalGroup(
+            Jp_lanzamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Jp_lanzamientoLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,10 +379,40 @@ public class MainLab6 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 285, Short.MAX_VALUE)
+                    .addComponent(Jp_lanzamientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 285, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 285, Short.MAX_VALUE)
+                    .addComponent(Jp_signup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 285, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(Jp_lanzamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 178, Short.MAX_VALUE)
+                    .addComponent(Jp_lanzamientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 178, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 178, Short.MAX_VALUE)
+                    .addComponent(Jp_signup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 178, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(Jp_lanzamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -194,6 +431,7 @@ public class MainLab6 extends javax.swing.JFrame {
     private void loginBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBActionPerformed
         // TODO add your handling code here:
     File inputFile = new File("usuarios.txt");
+    String[] datos = null;
 
     String u = usertxt.getText();
     String p = passwordtxt.getText();
@@ -203,15 +441,23 @@ public class MainLab6 extends javax.swing.JFrame {
             FileReader fr = new FileReader("./usuarios.txt");
             BufferedReader br = new BufferedReader(fr);
             String linea;
-
+            
             while ((linea = br.readLine()) != null) {
-                String[] datos = linea.split(",");
-                if (datos[0].equals(u) && datos[4].equals(p)) {
+                datos = linea.split(",");
+                
+                
+                if (datos[0].equals(u) && datos[3].equals(p)) {
                     JOptionPane.showMessageDialog(this, "Ingresado correctamente");
                 }else{
                     JOptionPane.showMessageDialog(this, "Usuario/contraseña incorrectos");
                 }
+                
+                if(datos[2].equals("Artista")){
+                    Bg.setVisible(false);
+                    Jp_lanzamiento.setVisible(true);
+                }
             }
+            
 
             br.close();
             fr.close();
@@ -220,19 +466,13 @@ public class MainLab6 extends javax.swing.JFrame {
             e.printStackTrace();
         }
 
-       
-     
    
     }//GEN-LAST:event_loginBActionPerformed
 
     private void signupBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupBActionPerformed
         // TODO add your handling code here:
-        s.setSize(680,420);
-         s.setLocation(0,0);
-        Bg.removeAll();
-        Bg.add(s,BorderLayout.CENTER);
-        Bg.revalidate();
-        Bg.repaint();
+       Bg.setVisible(false);
+       Jp_signup.setVisible(true);
     }//GEN-LAST:event_signupBActionPerformed
 
     private void signupBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupBMouseClicked
@@ -253,6 +493,76 @@ public class MainLab6 extends javax.swing.JFrame {
         // TODO add your handling code here:
         passwordtxt.setText("");
     }//GEN-LAST:event_passwordtxtMouseClicked
+
+    private void nombreA4nombreAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreA4nombreAMouseClicked
+        // TODO add your handling code here:
+        nombreA4.setText("");
+    }//GEN-LAST:event_nombreA4nombreAMouseClicked
+
+    private void username4usernameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_username4usernameMouseClicked
+        // TODO add your handling code here:
+        username4.setText("");
+    }//GEN-LAST:event_username4usernameMouseClicked
+
+    private void username4usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username4usernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_username4usernameActionPerformed
+
+    private void Create4CreateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Create4CreateMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Create4CreateMouseClicked
+
+    private void Create4CreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Create4CreateActionPerformed
+        String u = username4.getText();
+        String p = password4.getText();
+        int e = (Integer) edad4.getValue();
+        String na = nombreA4.getText();
+
+       
+
+            try {
+                if (tipodeuser2.getSelectedItem() == "Cliente") {
+                    FileWriter writer = new FileWriter("./usuarios.txt", true);
+                    writer.write(u + "," + e + "," + tipodeuser4.getSelectedItem() + "," + p + "\n");
+                    writer.close();
+                } else if (tipodeuser2.getSelectedItem() == "Artista") {
+                    FileWriter writer = new FileWriter("./usuarios.txt", true);
+                    writer.write(u + "," + e + "," + tipodeuser4.getSelectedItem() + "," + p + "\n"+ na + ",");
+                    writer.close();
+                }
+
+            } catch (IOException ex) {
+            }
+
+            // Limpiar los campos de texto después de guardar el usuario
+            username4.setText("");
+            password4.setText("");
+        
+    }//GEN-LAST:event_Create4CreateActionPerformed
+
+    private void tipodeuser4tipodeuserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tipodeuser4tipodeuserMouseClicked
+        // TODO add your handling code here:
+        if (tipodeuser4.getSelectedItem() == "Artista") {
+            nombreA4.setVisible(true);
+        } else if (tipodeuser2.getSelectedItem() == "Cliente") {
+            nombreA4.setVisible(false);
+        }
+    }//GEN-LAST:event_tipodeuser4tipodeuserMouseClicked
+
+    private void password4passwordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_password4passwordMouseClicked
+        // TODO add your handling code here:
+        password4.setText("");
+    }//GEN-LAST:event_password4passwordMouseClicked
+
+    private void signupB4signupBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupB4signupBMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_signupB4signupBMouseClicked
+
+    private void signupB4signupBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupB4signupBActionPerformed
+        signup.setVisible(false);
+        Bg.setVisible(true);
+
+    }//GEN-LAST:event_signupB4signupBActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,11 +601,45 @@ public class MainLab6 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bg;
+    private javax.swing.JButton Create2;
+    private javax.swing.JButton Create3;
+    private javax.swing.JButton Create4;
+    private javax.swing.JPanel Jp_lanzamiento;
+    private javax.swing.JPanel Jp_lanzamientos;
+    private javax.swing.JPanel Jp_signup;
+    private javax.swing.JSpinner edad2;
+    private javax.swing.JSpinner edad3;
+    private javax.swing.JSpinner edad4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTree jTree1;
     private javax.swing.JButton loginB;
     private javax.swing.JPanel loginP;
     private java.awt.Label logintxt;
+    private java.awt.Label logintxt1;
+    private javax.swing.JTextField nombreA2;
+    private javax.swing.JTextField nombreA3;
+    private javax.swing.JTextField nombreA4;
+    private javax.swing.JTextField password2;
+    private javax.swing.JTextField password3;
+    private javax.swing.JTextField password4;
     private javax.swing.JTextField passwordtxt;
+    private java.awt.Label signintxt2;
+    private java.awt.Label signintxt3;
+    private java.awt.Label signintxt4;
+    private javax.swing.JPanel signup;
+    private javax.swing.JPanel signup2;
+    private javax.swing.JPanel signup3;
     private javax.swing.JButton signupB;
+    private javax.swing.JButton signupB2;
+    private javax.swing.JButton signupB3;
+    private javax.swing.JButton signupB4;
+    private javax.swing.JComboBox<String> tipodeuser2;
+    private javax.swing.JComboBox<String> tipodeuser3;
+    private javax.swing.JComboBox<String> tipodeuser4;
+    private javax.swing.JTextField username2;
+    private javax.swing.JTextField username3;
+    private javax.swing.JTextField username4;
     private javax.swing.JTextField usertxt;
     // End of variables declaration//GEN-END:variables
 }
