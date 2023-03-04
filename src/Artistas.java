@@ -5,14 +5,11 @@ import java.util.ArrayList;
 public class Artistas extends Usuarios{
     private String nombre;
     private ArrayList<Canciones> cancion = new ArrayList();
-    private ArrayList<Albumes> cancion = new ArrayList();
+    private ArrayList<Albumes> songs = new ArrayList();
+    
 
     public Artistas() {
         super();
-    }
-
-    public Artistas(String nombre) {
-        this.nombre = nombre;
     }
 
     public Artistas(String nombre, String username, String password, int edad) {
@@ -36,18 +33,25 @@ public class Artistas extends Usuarios{
         this.cancion = cancion;
     }
 
-    public ArrayList<Canciones> getCancion() {
-        return cancion;
+    public ArrayList<Albumes> getSongs() {
+        return songs;
     }
 
-    public void setCancion(ArrayList<Canciones> cancion) {
-        this.cancion = cancion;
+    public void setSongs(ArrayList<Albumes> songs) {
+        this.songs = songs;
     }
+
+    public int getEdad() {
+        return edad;
+    }
+    
 
     @Override
     public String toString() {
-        return "Artistas{" + "nombre=" + nombre + ", cancion=" + cancion + ", cancion=" + cancion + '}';
+        return "Artistas{" + "nombre=" + nombre + ", cancion=" + cancion + ", songs=" + songs + '}';
     }
+
+    
     
     
 }

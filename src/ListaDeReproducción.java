@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 
 public class ListaDeReproducción {
-   private  String nombre ;
+   private  String nombre,creador ;
    private int likes;
    private ArrayList<Canciones> cancion  = new ArrayList();
 

@@ -1,6 +1,6 @@
 
 public class Lanzamientos {
-    protected String titulo,fechaLanzamiento;
+    protected String titulo,fechaLanzamiento,tipo;
     protected int likes;
 
     public Lanzamientos() {

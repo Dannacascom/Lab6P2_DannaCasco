@@ -1,3 +1,11 @@
+
+import java.awt.BorderLayout;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -8,12 +16,20 @@
  * @author Danna Casco
  */
 public class MainLab6 extends javax.swing.JFrame {
+     signup s = new signup();
+     Usuarios u = new Usuarios();
+     File f = new File("./Usuarios.txt");
+     int edad;
+     String Username,Password;
+     
 
     /**
      * Creates new form MainLab6
      */
     public MainLab6() {
         initComponents();
+        this.setLocationRelativeTo(null);
+       
     }
 
     /**
@@ -28,30 +44,70 @@ public class MainLab6 extends javax.swing.JFrame {
         Bg = new javax.swing.JPanel();
         loginP = new javax.swing.JPanel();
         logintxt = new java.awt.Label();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        label1 = new java.awt.Label();
+        passwordtxt = new javax.swing.JTextField();
+        usertxt = new javax.swing.JTextField();
+        loginB = new javax.swing.JButton();
+        signupB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Bg.setBackground(new java.awt.Color(0, 0, 0));
 
+        loginP.setBackground(new java.awt.Color(255, 255, 255));
+
         logintxt.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
         logintxt.setText("Log in");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        passwordtxt.setText("Password");
+        passwordtxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                passwordtxtMouseClicked(evt);
+            }
+        });
+        passwordtxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                passwordtxtActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(69, 173, 199));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Log in\n");
+        usertxt.setText("Username");
+        usertxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usertxtMouseClicked(evt);
+            }
+        });
+        usertxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usertxtActionPerformed(evt);
+            }
+        });
 
-        label1.setForeground(new java.awt.Color(169, 165, 165));
-        label1.setText("or,sign up");
+        loginB.setBackground(new java.awt.Color(69, 173, 199));
+        loginB.setForeground(new java.awt.Color(255, 255, 255));
+        loginB.setText("Log in\n");
+        loginB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginBMouseClicked(evt);
+            }
+        });
+        loginB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBActionPerformed(evt);
+            }
+        });
+
+        signupB.setForeground(new java.awt.Color(153, 153, 153));
+        signupB.setText("or,Sign up");
+        signupB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signupBMouseClicked(evt);
+            }
+        });
+        signupB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signupBActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout loginPLayout = new javax.swing.GroupLayout(loginP);
         loginP.setLayout(loginPLayout);
@@ -61,16 +117,14 @@ public class MainLab6 extends javax.swing.JFrame {
                 .addGroup(loginPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(loginPLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addGroup(loginPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(loginPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField1)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE))
-                            .addGroup(loginPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(logintxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(loginPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(passwordtxt)
+                            .addComponent(logintxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(usertxt, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(loginB, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)))
                     .addGroup(loginPLayout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(161, 161, 161)
+                        .addComponent(signupB)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         loginPLayout.setVerticalGroup(
@@ -79,14 +133,14 @@ public class MainLab6 extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(logintxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(usertxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(loginB, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(signupB)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout BgLayout = new javax.swing.GroupLayout(Bg);
@@ -96,7 +150,7 @@ public class MainLab6 extends javax.swing.JFrame {
             .addGroup(BgLayout.createSequentialGroup()
                 .addGap(114, 114, 114)
                 .addComponent(loginP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         BgLayout.setVerticalGroup(
             BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,7 +164,9 @@ public class MainLab6 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,9 +176,56 @@ public class MainLab6 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void usertxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usertxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_usertxtActionPerformed
+
+    private void loginBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBMouseClicked
+        // TODO add your handling code here:
+        
+       
+    }//GEN-LAST:event_loginBMouseClicked
+
+    private void loginBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBActionPerformed
+        // TODO add your handling code here:
+       
+    String u = usertxt.getText();
+    String p = passwordtxt.getText();
+    
+    
+       
+      
+   
+    }//GEN-LAST:event_loginBActionPerformed
+
+    private void signupBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupBActionPerformed
+        // TODO add your handling code here:
+        s.setSize(680,420);
+         s.setLocation(0,0);
+        Bg.removeAll();
+        Bg.add(s,BorderLayout.CENTER);
+        Bg.revalidate();
+        Bg.repaint();
+    }//GEN-LAST:event_signupBActionPerformed
+
+    private void signupBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupBMouseClicked
+        // TODO add your handling code here:
+         
+    }//GEN-LAST:event_signupBMouseClicked
+
+    private void usertxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxtMouseClicked
+        // TODO add your handling code here:
+        usertxt.setText("");
+    }//GEN-LAST:event_usertxtMouseClicked
+
+    private void passwordtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordtxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordtxtActionPerformed
+
+    private void passwordtxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordtxtMouseClicked
+        // TODO add your handling code here:
+        passwordtxt.setText("");
+    }//GEN-LAST:event_passwordtxtMouseClicked
 
     /**
      * @param args the command line arguments
@@ -161,11 +264,11 @@ public class MainLab6 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bg;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private java.awt.Label label1;
+    private javax.swing.JButton loginB;
     private javax.swing.JPanel loginP;
     private java.awt.Label logintxt;
+    private javax.swing.JTextField passwordtxt;
+    private javax.swing.JButton signupB;
+    private javax.swing.JTextField usertxt;
     // End of variables declaration//GEN-END:variables
 }

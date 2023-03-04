@@ -1,9 +1,14 @@
 
 public class Usuarios {
-    protected String username,password;
+    protected String username,password,tipo;
     protected int edad;
 
     public Usuarios() {
+    }
+
+    public Usuarios(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public Usuarios(String username, String password, int edad) {
