@@ -1,9 +1,13 @@
 
 import java.awt.BorderLayout;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /*
@@ -16,6 +20,7 @@ import javax.swing.JOptionPane;
  * @author Danna Casco
  */
 public class MainLab6 extends javax.swing.JFrame {
+    File archivo;
      signup s = new signup();
      Usuarios u = new Usuarios();
      File f = new File("./Usuarios.txt");
@@ -188,13 +193,35 @@ public class MainLab6 extends javax.swing.JFrame {
 
     private void loginBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBActionPerformed
         // TODO add your handling code here:
-       
+    File inputFile = new File("usuarios.txt");
+
     String u = usertxt.getText();
     String p = passwordtxt.getText();
     
-    
+  
+        try {
+            FileReader fr = new FileReader("./usuarios.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(",");
+                if (datos[0].equals(u) && datos[4].equals(p)) {
+                    JOptionPane.showMessageDialog(this, "Ingresado correctamente");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Usuario/contraseña incorrectos");
+                }
+            }
+
+            br.close();
+            fr.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
        
-      
+     
    
     }//GEN-LAST:event_loginBActionPerformed
 
