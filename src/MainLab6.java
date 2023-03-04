@@ -9,31 +9,35 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.MutableTreeNode;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Danna Casco
  */
 public class MainLab6 extends javax.swing.JFrame {
+
     File archivo;
-     Usuarios u = new Usuarios();
-     File f = new File("./Usuarios.txt");
-     int edad;
-     String Username,Password;
-     
+    Usuarios u = new Usuarios();
+    File f = new File("./Usuarios.txt");
+    int edad;
+    String Username, Password;
 
     /**
      * Creates new form MainLab6
      */
     public MainLab6() {
         initComponents();
-        Bg.setLocation(0, 0);
-       
+        signup.setVisible(false);
+        Jp_lanzamiento.setVisible(false);
+        Jp_Cliente.setVisible(false);
+
     }
 
     /**
@@ -45,6 +49,10 @@ public class MainLab6 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        eliminar = new javax.swing.JMenuItem();
+        crear = new javax.swing.JMenuItem();
+        editar = new javax.swing.JMenuItem();
         Bg = new javax.swing.JPanel();
         loginP = new javax.swing.JPanel();
         logintxt = new java.awt.Label();
@@ -68,6 +76,17 @@ public class MainLab6 extends javax.swing.JFrame {
         logintxt1 = new java.awt.Label();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
+        Jp_Cliente = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTree2 = new javax.swing.JTree();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+
+        eliminar.setText("Eliminar");
+
+        crear.setText("Crear");
+
+        editar.setText("editar\n");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -170,14 +189,14 @@ public class MainLab6 extends javax.swing.JFrame {
             .addGroup(BgLayout.createSequentialGroup()
                 .addGap(114, 114, 114)
                 .addComponent(loginP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addGap(200, 200, 200))
         );
         BgLayout.setVerticalGroup(
             BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BgLayout.createSequentialGroup()
                 .addGap(124, 124, 124)
                 .addComponent(loginP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout Jp_lanzamientosLayout = new javax.swing.GroupLayout(Jp_lanzamientos);
@@ -329,6 +348,11 @@ public class MainLab6 extends javax.swing.JFrame {
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
         jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jTree1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTree1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTree1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -372,37 +396,76 @@ public class MainLab6 extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
+        Jp_Cliente.setBackground(new java.awt.Color(0, 0, 0));
+
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
+        jTree2.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane2.setViewportView(jTree2);
+
+        jScrollPane3.setViewportView(jList1);
+
+        javax.swing.GroupLayout Jp_ClienteLayout = new javax.swing.GroupLayout(Jp_Cliente);
+        Jp_Cliente.setLayout(Jp_ClienteLayout);
+        Jp_ClienteLayout.setHorizontalGroup(
+            Jp_ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Jp_ClienteLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        Jp_ClienteLayout.setVerticalGroup(
+            Jp_ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Jp_ClienteLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(Jp_ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3))
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Jp_lanzamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(254, 254, 254))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 285, Short.MAX_VALUE)
+                    .addGap(0, 752, Short.MAX_VALUE)
                     .addComponent(Jp_lanzamientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 285, Short.MAX_VALUE)))
+                    .addGap(0, 752, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 285, Short.MAX_VALUE)
+                    .addGap(0, 521, Short.MAX_VALUE)
                     .addComponent(Jp_signup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 285, Short.MAX_VALUE)))
+                    .addGap(0, 522, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(Jp_lanzamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Jp_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Bg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(244, Short.MAX_VALUE)
+                .addComponent(Jp_lanzamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(125, 125, 125))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 178, Short.MAX_VALUE)
+                    .addGap(0, 346, Short.MAX_VALUE)
                     .addComponent(Jp_lanzamientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 178, Short.MAX_VALUE)))
+                    .addGap(0, 347, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 178, Short.MAX_VALUE)
@@ -411,7 +474,7 @@ public class MainLab6 extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(Jp_lanzamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Jp_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -424,60 +487,90 @@ public class MainLab6 extends javax.swing.JFrame {
 
     private void loginBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBMouseClicked
         // TODO add your handling code here:
-        
-       
+        Bg.setVisible(false);
+        signup.setVisible(false);
+        Jp_lanzamientos.setVisible(true);
+
+
     }//GEN-LAST:event_loginBMouseClicked
 
     private void loginBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBActionPerformed
         // TODO add your handling code here:
-    File inputFile = new File("usuarios.txt");
-    String[] datos = null;
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");
+        File inputFile = new File("usuarios.txt");
+        String[] datos = null;
 
-    String u = usertxt.getText();
-    String p = passwordtxt.getText();
-    
-  
+        String u = usertxt.getText();
+        String p = passwordtxt.getText();
+
         try {
             FileReader fr = new FileReader("./usuarios.txt");
             BufferedReader br = new BufferedReader(fr);
             String linea;
-            
+
             while ((linea = br.readLine()) != null) {
                 datos = linea.split(",");
-                
-                
+
                 if (datos[0].equals(u) && datos[3].equals(p)) {
                     JOptionPane.showMessageDialog(this, "Ingresado correctamente");
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(this, "Usuario/contraseña incorrectos");
                 }
-                
-                if(datos[2].equals("Artista")){
+
+                if (datos[2].equals("Artista")) {
                     Bg.setVisible(false);
+                    Jp_Cliente.setVisible(false);
+                    signup.setVisible(false);
                     Jp_lanzamiento.setVisible(true);
+                    try {
+                        BufferedReader rd = new BufferedReader(new FileReader("./Lanzamientos.txt"));
+
+                        String line;
+                        while ((line = rd.readLine()) != null) {
+                            String[] parts = line.split("\\+");
+                            DefaultMutableTreeNode node = new DefaultMutableTreeNode(parts[0]);
+
+                            for (int i = 1; i < parts.length; i++) {
+                                DefaultMutableTreeNode child = new DefaultMutableTreeNode(parts[i]);
+                                node.add(child);
+                            }
+
+                            root.add(node);
+                        }
+
+                        rd.close();
+                    } catch (IOException e) {
+
+                    }
+                } else if (datos[2].equals("Cliente")) {
+                    Bg.setVisible(false);
+                    signup.setVisible(false);
+                    Jp_lanzamiento.setVisible(false);
+                    Jp_Cliente.setVisible(true);
+
                 }
             }
-            
 
             br.close();
             fr.close();
 
         } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-   
+        }
     }//GEN-LAST:event_loginBActionPerformed
 
     private void signupBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupBActionPerformed
         // TODO add your handling code here:
-       Bg.setVisible(false);
-       Jp_signup.setVisible(true);
+                        Bg.setVisible(false);
+                    Jp_Cliente.setVisible(false);
+                    signup.setVisible(true);
+                    Jp_lanzamiento.setVisible(false);
+
     }//GEN-LAST:event_signupBActionPerformed
 
     private void signupBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupBMouseClicked
         // TODO add your handling code here:
-         
+
     }//GEN-LAST:event_signupBMouseClicked
 
     private void usertxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertxtMouseClicked
@@ -510,6 +603,8 @@ public class MainLab6 extends javax.swing.JFrame {
 
     private void Create4CreateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Create4CreateMouseClicked
         // TODO add your handling code here:
+        signup.setVisible(false);
+        loginP.setVisible(true);
     }//GEN-LAST:event_Create4CreateMouseClicked
 
     private void Create4CreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Create4CreateActionPerformed
@@ -518,26 +613,25 @@ public class MainLab6 extends javax.swing.JFrame {
         int e = (Integer) edad4.getValue();
         String na = nombreA4.getText();
 
-       
-
-            try {
-                if (tipodeuser2.getSelectedItem() == "Cliente") {
-                    FileWriter writer = new FileWriter("./usuarios.txt", true);
-                    writer.write(u + "," + e + "," + tipodeuser4.getSelectedItem() + "," + p + "\n");
-                    writer.close();
-                } else if (tipodeuser2.getSelectedItem() == "Artista") {
-                    FileWriter writer = new FileWriter("./usuarios.txt", true);
-                    writer.write(u + "," + e + "," + tipodeuser4.getSelectedItem() + "," + p + "\n"+ na + ",");
-                    writer.close();
-                }
-
-            } catch (IOException ex) {
+        try {
+            if (tipodeuser4.getSelectedItem() == "Cliente") {
+                FileWriter writer = new FileWriter("./usuarios.txt", true);
+                writer.write(u + "," + e + "," + tipodeuser4.getSelectedItem() + "," + p + "\n");
+                writer.close();
+            } else if (tipodeuser4.getSelectedItem() == "Artista") {
+                FileWriter writer = new FileWriter("./usuarios.txt", true);
+                writer.write(u + "," + e + "," + tipodeuser4.getSelectedItem() + "," + p + "\n" + na + ",");
+                writer.close();
             }
 
-            // Limpiar los campos de texto después de guardar el usuario
-            username4.setText("");
-            password4.setText("");
-        
+        } catch (IOException ex) {
+        }
+
+        // Limpiar los campos de texto después de guardar el usuario
+        username4.setText("");
+        password4.setText("");
+
+
     }//GEN-LAST:event_Create4CreateActionPerformed
 
     private void tipodeuser4tipodeuserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tipodeuser4tipodeuserMouseClicked
@@ -555,14 +649,20 @@ public class MainLab6 extends javax.swing.JFrame {
     }//GEN-LAST:event_password4passwordMouseClicked
 
     private void signupB4signupBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupB4signupBMouseClicked
-        // TODO add your handling code here:
+        // TODO add your handling code here
+        signup.setVisible(false);
+        loginP.setVisible(true);
     }//GEN-LAST:event_signupB4signupBMouseClicked
 
     private void signupB4signupBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupB4signupBActionPerformed
-        signup.setVisible(false);
-        Bg.setVisible(true);
+
 
     }//GEN-LAST:event_signupB4signupBActionPerformed
+
+    private void jTree1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree1MouseClicked
+        // TODO add your handling code here:
+        jPopupMenu1.setVisible(true);
+    }//GEN-LAST:event_jTree1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -604,15 +704,24 @@ public class MainLab6 extends javax.swing.JFrame {
     private javax.swing.JButton Create2;
     private javax.swing.JButton Create3;
     private javax.swing.JButton Create4;
+    private javax.swing.JPanel Jp_Cliente;
     private javax.swing.JPanel Jp_lanzamiento;
     private javax.swing.JPanel Jp_lanzamientos;
     private javax.swing.JPanel Jp_signup;
+    private javax.swing.JMenuItem crear;
     private javax.swing.JSpinner edad2;
     private javax.swing.JSpinner edad3;
     private javax.swing.JSpinner edad4;
+    private javax.swing.JMenuItem editar;
+    private javax.swing.JMenuItem eliminar;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTree jTree1;
+    private javax.swing.JTree jTree2;
     private javax.swing.JButton loginB;
     private javax.swing.JPanel loginP;
     private java.awt.Label logintxt;
